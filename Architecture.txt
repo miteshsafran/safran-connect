@@ -5,7 +5,7 @@
 | LLM            | Ollama                        |
 | Local LLM      | Gemma 3 / Qwen / Llama family |
 | Embeddings     | Ollama embedding model        |
-| Vector DB      | Qdrant                        |
+| Vector DB      | Qdrant/Docker                        |
 | RAG framework  | LangChain initially           |
 | PDF            | PyMuPDF                       |
 | DOCX           | python-docx                   |
