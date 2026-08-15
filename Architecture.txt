@@ -15,55 +15,74 @@
 | OS for demo    | Windows                       |
 
 
-We don't send the entire PDFs to the LLM every time
+Step to Install Models in Ollama
+1. Download Model From 
+    https://huggingface.co/ggml-org/gemma-3-4b-it-GGUF/blob/main/gemma-3-4b-it-Q4_K_M.gguf?utm_source=chatgpt.com
+2. dir "C:\Users\DI402833\Desktop\Ms Documents\AI\Models\gemma-3-4b-it-Q4_K_M.gguf"
+3. goto folder
+    cd "C:\Users\DI402833\Desktop\Ms Documents\AI\Models"
+4. create a modelfile
+    notepad Modelfile
+5. open file and put it 
+    FROM ./gemma-3-4b-it-Q4_K_M.gguf
 
-                    DOCUMENT INGESTION
-                           │
-                           ▼
-                    PDF / DOCX files
-                           │
-                           ▼
-                     Text extraction
-                           │
-                           ▼
-                       Chunking
-                           │
-                           ▼
-                    Embedding Model
-                           │
-                           ▼
-                    Vector Embeddings
-                           │
-                           ▼
-                       Qdrant
-                    Vector Database
-                
-If any user ask like that
-        How many casual leaves can I take? 
-        Then application does
+    PARAMETER temperature 0.2
+    PARAMETER num_ctx 4096
+6. Then run 
+    ollama create company-gemma -f Modelfile
 
-                        Employee Question
-                            │
-                            ▼
-                        Embedding Model
-                            │
-                            ▼
-                        Question Vector
-                            │
-                            ▼
-                        Qdrant Search
-                            │
-                            ▼
-                        Top relevant chunks
-                            │
-                            ▼
-                            Prompt
-                            │
-                            ▼
-                        Local LLM
-                            │
-                            ▼
-                        Grounded Answer
-                            │
-                            ▼
-                        React UI
+7. run below cmd
+    ollama run company-gemma
+8. Verify 
+    ollama list
+9. See details 
+    ollama ps
+
+
+Step to Install Models in Ollama embedding
+1. Download Model From 
+    https://huggingface.co/ggml-org/embeddinggemma-300M-qat-q4_0-GGUF/blob/main/embeddinggemma-300M-qat-Q4_0.gguf
+2. dir "C:\Users\DI402833\Desktop\Ms Documents\AI\Models\embeddinggemma\embeddinggemma-300M-qat-Q4_0.gguf"
+3. goto folder
+    cd "C:\Users\DI402833\Desktop\Ms Documents\AI\Models\embeddinggemma"
+4. create a modelfile
+    notepad Modelfile
+5. open file and put it 
+    FROM ./embeddinggemma-300M-qat-Q4_0.gguf
+6. Then run 
+   ollama create company-embedding -f Modelfile
+7. Verify 
+    ollama list
+8. See details 
+    ollama ps
+
+
+Step Install Vector DB in Local
+1. Download qdrant-x86_64-pc-windows-msvc.zip
+2. create a folder  
+    C:\qdrant
+3. paste exe in this folder
+    C:\qdrant\qdrant.exe
+4. Open Terminal
+    cd C:\qdrant
+5. Start Qdrant
+    .\qdrant.exe
+6. Keep Terminal open
+7. Run in browser
+    http://localhost:6333/
+
+
+Run application in localhost
+
+1. Open Terminal
+2. ollama list
+3. Open Terminal 2.
+4. C:\qdrant\qdrant.exe
+5. Verify http://localhost:6333
+
+6. Open Terminal 3.
+7. open backend
+    7.1 run python -m venv venv
+    7.2 venv\Scripts\activate 
+8. python -m pip install -r requirements.txt
+9. uvicorn app.main:app --reload

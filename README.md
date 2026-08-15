@@ -1,4 +1,4 @@
-# safran-connect
+# ConnectAI
 
 I want to create an application for my company where employees can ask questions about company documents, such as Leave Policies, HR Policies, and other internal guidelines.
 
