@@ -6,6 +6,10 @@ from app.rag.embeddings import generate_query_embedding
 from app.rag.vector_store import search
 
 
+# Tune this later based on your embedding model
+RELEVANCE_THRESHOLD = 0.45
+
+
 def retrieve(
     question: str,
     limit: int = 3,
@@ -36,4 +40,19 @@ def retrieve(
         f"Qdrant time: {qdrant_time:.2f}s"
     )
 
-    return results
+    # ---------------------------------
+    # Remove irrelevant results
+    # ---------------------------------
+
+    relevant_results = [
+        result
+        for result in results
+        if result["score"] >= RELEVANCE_THRESHOLD
+    ]
+
+    print(
+        f"Relevant results: "
+        f"{len(relevant_results)} / {len(results)}"
+    )
+
+    return relevant_results
