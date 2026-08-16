@@ -7,3 +7,6 @@
                   ollama pull gemma3:1b - 800mb -  Not Allow
 
 5. Install Docker - Not Allow
+    5.1 - docker pull qdrant/qdrant
+    5.2 - docker run -d \ --name qdrant \ -p 6333:6333 \ -v ~/qdrant_storage:/qdrant/storage \ qdrant/qdrant
+    5.3  - Open Your Browser and run it - http://localhost:6333

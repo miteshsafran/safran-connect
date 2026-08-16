@@ -38,7 +38,7 @@ def chat(request: ChatRequest):
 
     results = retrieve(
         question=question,
-        limit=3,
+        limit=10,
     )
 
     retrieval_time = time.perf_counter() - start

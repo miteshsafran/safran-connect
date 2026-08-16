@@ -105,7 +105,7 @@ def insert_chunks(
 
 def search(
     query_vector: List[float],
-    limit: int = 5,
+    limit: int = 10,
 ) -> List[Dict]:
     """
     Search Qdrant for the most relevant document chunks.

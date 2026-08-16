@@ -8,3 +8,4 @@ langchain-ollama
 qdrant-client
 pydantic
 python-dotenv
+sentence-transformers

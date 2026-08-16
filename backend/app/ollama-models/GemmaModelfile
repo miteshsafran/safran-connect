@@ -1,0 +1,1 @@
+FROM hf.co/ggml-org/gemma-3-4b-it-GGUF:Q4_K_M
